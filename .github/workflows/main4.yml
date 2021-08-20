@@ -1,4 +1,4 @@
-name: Copy the report for DevSecOps Workflow for MyVodafoneApp
+name: Report of Safety
 on: [push]
 jobs:
   build:
@@ -23,15 +23,12 @@ jobs:
       - name: Clone the Repository
         uses: actions/checkout@v2
 
-      - name: Install Retire.JS
-        run: npm install -g retire
+      - name: Install Safety
+        run: pip install safety
 
-      - name: Install Node Modules
-        run: npm install
-
-      - name: run Retire.JS Scan
+      - name: run Safety
         run: | 
-          retire --outputpath output.json
+          safety check -r requirements.txt --json -o output.json
         continue-on-error: true
         
       - name: download the json report
@@ -48,5 +45,3 @@ jobs:
       - run: |
           echo "deployment Job is going on"
           sleep 10
-
-
