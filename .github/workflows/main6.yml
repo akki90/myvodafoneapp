@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Retire
-        run: npm insall -g retire
+        run: npm install -g retire
 
       - name: Install npm
         run: npm install
