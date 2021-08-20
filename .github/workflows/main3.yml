@@ -31,26 +31,15 @@ jobs:
 
       - name: run Retire.JS Scan
         run: | 
-          retire > output.txt
+          retire --outputformat output.json
         continue-on-error: true
       - name: download the json report
         uses: actions/upload-artifact@v2
         with:
           name: output
-          path: output.txt
+          path: output.json
         if: always()
-
-  Validate:
-    runs-on: ubuntu-latest
-    needs: oast-retire
-    steps:
-      - name: download the file
-        uses: actions/download-artifact@v2
-        with:
-          name: output
-      - name: Validation if file is created
-        run: cat output.txt
-
+        
   deployment:
     runs-on: ubuntu-latest
     needs: oast-retire
