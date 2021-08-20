@@ -31,13 +31,13 @@ jobs:
 
       - name: run Retire.JS Scan
         run: | 
-          retire --outputformat json --outputpath retire_output.json > output.json
+          retire --outputformat json --outputpath retire_output.json > output.txt
         continue-on-error: true
       - name: download the json report
         uses: actions/upload-artifact@v2
         with:
           name: output
-          path: output.json
+          path: output.txt
         if: always()
 
   Validate:
@@ -49,7 +49,7 @@ jobs:
         with:
           name: output
       - name: Validation if file is created
-        run: cat output.json
+        run: cat output.txt
 
   deployment:
     runs-on: ubuntu-latest
