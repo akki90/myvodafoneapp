@@ -1,4 +1,4 @@
-name: Consolidated report of both Retire and Safety
+name: Consolidated report of both Retire and Safety and npm-audit
 on: [push]
 jobs:
   Build:
