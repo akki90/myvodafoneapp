@@ -75,7 +75,7 @@ jobs:
       - name: upload the report
         uses: actions/upload-artifact@v2
         with:
-          name: Retire Report
+          name: npm auidt Report
           path: npm-output.json
           if: always()
 
