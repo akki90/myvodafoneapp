@@ -47,7 +47,7 @@ jobs:
       - name: download the file
         uses: actions/download-artifact@v2
         with:
-          name: textfile
+          name: output
       - name: Validation if file is created
         run: cat output.json
 
