@@ -80,6 +80,30 @@ jobs:
           path: npm-output.json
           if: always()
 
+
+  sast-trufflehog:
+    runs-on: ubuntu-latest
+    needs: [oast-retire,oast-safety,oast-npm-audit]
+    steps:
+      - name: Clone the Repository
+        uses: actions/checkout@v2
+
+      - name: Install Trufflehog
+        run: pip install trufflehog
+
+      - name: run trufflehog Scan
+        run: trufflehog --json https://github.com/akki90/myvodafoneapp.git  | tee -o trufflehog.json
+        continue-on-error: true
+      
+      - name: Upload the Trufflehog Output file
+        uses: actions/upload-artifact@v2
+        with:
+          name: Trufflehog-Output-file
+          path: trufflehog.json
+        if: always()
+
+
+
   deployment:
     runs-on: ubuntu-latest
     needs: [oast-retire,oast-safety,oast-npm-audit]
