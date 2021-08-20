@@ -1,0 +1,41 @@
+name: Consolidated report of both Retire and Safety
+on: [push]
+Jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - run:
+          echo "Build JOb is being done"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run:
+          echo "test job is going on"
+
+  oast-retire:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v2
+
+      - name: Install Retire
+        run: npm insall -g retire
+
+      - name: Install npm
+        run: npm install
+
+      - name: Run retire.js scan
+        run: 
+          retire --outputformat json --outputpath retire-output.json
+        continue-on-error: true
+
+      - name: upload the report
+        uses: actions/upload-artifact@v2
+        with:
+          name: Retire Report
+          path: retire-output.json
+          if: always()
+
+
