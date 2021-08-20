@@ -31,7 +31,7 @@ jobs:
 
       - name: run Retire.JS Scan
         run: | 
-          retire --outputformat output.json
+          retire --outputpath output.json
         continue-on-error: true
       - name: download the json report
         uses: actions/upload-artifact@v2
@@ -39,7 +39,7 @@ jobs:
           name: output
           path: output.json
         if: always()
-        
+
   deployment:
     runs-on: ubuntu-latest
     needs: oast-retire
