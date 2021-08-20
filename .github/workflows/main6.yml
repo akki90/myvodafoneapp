@@ -1,6 +1,6 @@
 name: Consolidated report of both Retire and Safety
 on: [push]
-Jobs:
+jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
