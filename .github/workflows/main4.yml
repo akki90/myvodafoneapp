@@ -28,7 +28,7 @@ jobs:
 
       - name: run Safety
         run: | 
-          safety check -r requirements.txt --json -o output.json
+          safety check -r requirements.txt --full-report --json -o safety_output.json
         continue-on-error: true
         
       - name: download the json report
