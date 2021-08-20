@@ -34,11 +34,11 @@ jobs:
           retire --outputformat json --outputpath retire_output.json > output.json
         continue-on-error: true
       - name: download the json report
-          uses: actions/upload-artifact@v2
-            with:
-              name: output
-              path: output.json
-            if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: output
+          path: output.json
+        if: always()
 
   Validate:
     runs-on: ubuntu-latest
