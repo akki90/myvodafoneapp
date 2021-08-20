@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: output
-          path: output.json
+          path: safety_output.json
         if: always()
 
   deployment:
