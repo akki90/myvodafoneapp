@@ -92,7 +92,7 @@ jobs:
         run: pip install trufflehog
 
       - name: run trufflehog Scan
-        run: trufflehog --json https://github.com/akki90/myvodafoneapp.git  | tee -o trufflehog.json
+        run: trufflehog --json https://github.com/akki90/myvodafoneapp.git  | tee trufflehog.json
         continue-on-error: true
       
       - name: Upload the Trufflehog Output file
