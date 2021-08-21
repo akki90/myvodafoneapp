@@ -1,4 +1,4 @@
-name: Consolidated report of both Retire and Safety and npm-audit
+name: Consolidated report of both Retire and Safety and npm-audit and Trufflehog
 on: [push]
 jobs:
   Build:
